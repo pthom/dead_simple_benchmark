@@ -1,0 +1,42 @@
+name: example
+
+on: [workflow_dispatch, push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.platform }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - windows-latest
+          - ubuntu-latest
+          - macos-latest
+    name: "${{ matrix.platform }}"
+
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Build
+        shell: bash
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build . --config Release
+
+      #- name: Setup interactive tmate session # uncomment this to get a remote shell to debug the build
+      #  if: ${{ matrix.platform == 'windows-2022' }}
+      #  uses: mxschmitt/action-tmate@v3
+
+      - name: Run tests on Windows
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          ./build/Release/example.exe
+
+      - name: Run tests on Unix-like systems
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          ./build/example
