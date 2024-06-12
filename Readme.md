@@ -35,21 +35,21 @@ int main()
     {
          Create a new random vector each time
         auto randomValues = CreateRandomVector();
-
-         Benchmark the sort function
+         
+        // Benchmark the sort function
         BENCHMARK_VOID_EXPRESSION(gBenchmark, "Sort",
         {
             std::sort(randomValues.begin(), randomValues.end());
         });
     }
 
-    printf("Benchmark \n%s", gBenchmark.Report().c_str());
+    printf("Benchmark:\n%s", gBenchmark.Report().c_str());
 }
 ```
 
 will output:
 
 ```
-Benchmark 
+Benchmark: 
 Sort : 100 calls, 1858.215ms total, 18582.152us average, 436.465us Deviation
 ```
