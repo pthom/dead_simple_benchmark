@@ -1,5 +1,8 @@
-#include <vector>
 #include "bench.hpp"
+
+#include <vector>
+#include <algorithm>
+#include <cstdio>
 
 
 static BenchmarkSession gBenchmark;

@@ -2,23 +2,26 @@ bench.hpp: Dead-simple benchmark utility (header only)
 ======================================================
 
 > Pascal Thomet / 2024
->     Originally developed by
->     for FunctionalPlus (https:github.com/Dobiasd/FunctionalPlus)
+> 
+>  Originally developed for [FunctionalPlus](https:github.com/Dobiasd/FunctionalPlus)
 
 
 Example usage:
 --------------
 
 ```cpp
-#include <vector>
 #include "bench.hpp"
+
+#include <vector>
+#include <algorithm>
+#include <cstdio>
+
 
 static BenchmarkSession gBenchmark;
 
-
 int main()
 {
-     Create a random huge vector
+    // Create a random huge vector
     auto CreateRandomVector = []
     {
         std::vector<double> randomValues;
@@ -27,7 +30,7 @@ int main()
         return randomValues;
     };
 
-     Run the benchmark several times
+    // Run the benchmark several times
     for (int i = 0; i < 100; ++i)
     {
          Create a new random vector each time

@@ -10,8 +10,11 @@
 // Example usage:
 // --------------
 //
-//#include <vector>
 //#include "bench.hpp"
+//
+//#include <vector>
+//#include <algorithm>
+//#include <cstdio>
 //
 //static BenchmarkSession gBenchmark;
 //
@@ -55,6 +58,8 @@
 #include <vector>
 #include <sstream>
 #include <mutex>
+#include <cmath>
+#include <algorithm>
 
 
 namespace Bench
